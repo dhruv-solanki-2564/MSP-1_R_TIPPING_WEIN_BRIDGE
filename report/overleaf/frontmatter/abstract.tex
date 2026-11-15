@@ -1,0 +1,29 @@
+% ---------------------------------------------------------------------
+%  Abstract
+% ---------------------------------------------------------------------
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\markboth{Abstract}{}
+
+A system can tip into a new state not only because a parameter crosses a critical value, but also
+because the parameter changes faster than the system can follow. This second route, \emph{rate-induced
+tipping}, is well developed in theory and in models, yet laboratory demonstrations remain few. In this
+project we ask whether a simple electronic circuit can show it.
+
+We study an operational-amplifier Wien-bridge oscillator whose gain $G$ is swept back and forth
+across the oscillation threshold $\Gc$ by an Arduino-driven digital potentiometer. Above $\Gc$ the quiet
+state loses stability through a Hopf bifurcation and an oscillation grows out of noise; below $\Gc$ it
+decays. The work proceeds in four stages. Circuit simulations of a smooth gain ramp first show that the
+onset and the decay of the oscillation both lag behind the threshold, and that the lag grows as the
+square root of the sweep rate $\lambda$. Bench experiments with a staircase sweep of the feedback
+resistor confirm the same $\sqrt{\lambda}$ law on hardware and reveal rate-dependent hysteresis. A
+simulated copy of that experiment extends the sweep to rates the bench cannot reach. Finally, sweeping
+the input resistor along a fixed gain path, we find that the long-time state of the circuit depends on
+the rate alone: at slow rates the oscillation re-ignites in every cycle, while above a sharp critical
+rate it switches off once and never returns.
+
+A single growth-rate argument accounts for all of these observations. The oscillation needs a fixed
+amount of exponential growth to climb from the noise floor to full size, and a faster sweep leaves less
+time above threshold in which to collect it. The same argument yields the $\sqrt{\lambda}$ law, the
+critical rates, and their dependence on noise. Together, the results establish the Wien-bridge
+oscillator as a controllable analogue system that displays clear signatures of rate-induced tipping.

@@ -1,0 +1,15 @@
+% ---------------------------------------------------------------------
+%  Table of contents. Lists of figures and tables are given at the start
+%  of each chapter (see \chapterlists in preamble.tex).
+% ---------------------------------------------------------------------
+\cleardoublepage
+\etocsetnexttocdepth{section}
+\etocsettocstyle{\chapter*{Contents}\markboth{Contents}{}}{}
+\etocstandardlines
+\begingroup
+\makeatletter
+\patchcmd{\l@chapter}{1.0em}{0.35em}{}{}
+\makeatother
+\small
+\tableofcontents
+\endgroup

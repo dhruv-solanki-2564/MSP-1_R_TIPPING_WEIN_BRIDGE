@@ -1,0 +1,80 @@
+% =====================================================================
+%  Chapter 8 -- Discussion
+% =====================================================================
+\chapter{Discussion}\label{ch:discussion}
+\chapterlists[t]
+
+\section{The three criteria, revisited}\label{sec:criteria-revisited}
+
+\Cref{tab:criteria-evidence} collects the evidence for the criteria of \cref{sec:criteria}.
+
+\begin{table}[!htb]
+  \centering
+  \small
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.1cm}@{}}
+    \toprule
+    \textbf{Criterion} & \textbf{Evidence} & \textbf{Where} \\
+    \midrule
+    1. Lag behind a moving threshold &
+      Switch-on above and switch-off below threshold, in simulation and on the bench; hysteresis loops
+      widening with rate. &
+      \cref{fig:s1-traces,fig:s2-thresholds,fig:s2-loops} \\
+    2. Lag grows predictably with rate &
+      Switch-off shift $\propto\sqrt{\lambda}$ in simulation (exponent $0.499\pm0.003$) and on the bench
+      ($0.56\pm0.08$), $k_{\mathrm{off}}$ within a few per cent of \eqref{eq:Roff}, fixed delay disfavoured.
+      Switch-on exponent slightly above $\tfrac12$. In configuration B the law fits only marginally better
+      than a fixed delay, with a coefficient $27\%$ below theory. &
+      \cref{tab:s3-compare}, \cref{fig:s1-thresholds,fig:s3-thresholds,fig:s4-switchoff} \\
+    3. Long-time state set by rate alone &
+      On one fixed path, 10 runs re-ignite every cycle and 9 stay off, separated by
+      $\SI{6.06}{\kilo\ohm\per\second}<\lamc<\SI{6.20}{\kilo\ohm\per\second}$; reproduced in simulation;
+      absent for a single sweep. &
+      \cref{fig:s4-twofates,fig:s4-cyclemap,fig:s4-tipping,fig:s4-single} \\
+    \bottomrule
+  \end{tabularx}
+  \caption[The three criteria and the evidence for each]{The three criteria and the evidence.}
+  \label{tab:criteria-evidence}
+\end{table}
+
+\section{One idea behind every result}\label{sec:one-idea}
+
+Near threshold the amplitude changes exponentially at a rate proportional to the distance from threshold
+(\cref{eq:sigma}), and switching state needs a fixed accumulated growth. Everything follows from how much
+time the sweep allows to collect it:
+\begin{itemize}
+  \item one crossing: growth $\propto\lambda t^{2}$, giving the $\sqrt{\lambda}$ lag
+        (\cref{eq:Ron,eq:Roff});
+  \item a finite range: the lag eventually exceeds it, giving the first critical rate (\cref{eq:s2-lam1});
+  \item repeated crossings: budgets $\propto 1/\lambda$ (\cref{eq:budget-rate}); when the decay budget runs
+        out the circuit stays on (\cref{eq:s3-lamc}), when the growth budget runs out it stays off
+        (\cref{eq:s4-lamc}).
+\end{itemize}
+The path decides which of the last two happens; the rate, threshold and (for tipping to quiet) the noise
+decide where. Two predictions, $k_{\mathrm{off}}$ of \cref{eq:Roff} and $A_{\min}=\Asat e^{-\Gm}$ of
+\cref{eq:Amin}, contain no free parameter and are reproduced to within a few per cent
+(\cref{fig:s1-thresholds,fig:s3-amin}).
+
+\section{What kind of tipping is this?}\label{sec:what-kind}
+
+In its strict sense, R-tipping concerns a stable state that exists all along the path of the parameter
+and is lost only because the system cannot follow it~\cite{Ashwin2012,Wieczorek2023}. Our circuit differs:
+each pass crosses the Hopf threshold, so the quiet state is unstable above it and the oscillation does not
+exist below it. What we observe is the \emph{signature} of R-tipping. The circuit is driven periodically
+along a fixed path and ends in one of two long-time states, an oscillation rebuilt every cycle or a quiet
+state never left, and which one is decided by the rate alone, across a sharp critical rate. The
+single-sweep control shows that one pass cannot make this choice; it is the accumulation of many passes,
+each too short for recovery. Noise only sets the level from which regrowth starts; at fixed noise the rate
+alone decides. Experiments differing only in rate end in different states, which is the defining property
+of R-tipping, here realised under periodic forcing across a bifurcation.
+
+\section{The Wien-bridge oscillator as an analogue system}\label{sec:analogue}
+
+The circuit is a well-characterised, controllable analogue system for rate-induced phenomena. Distance
+from threshold, time scale ($RC$), path and rate, and potentially noise, are all independent circuit
+parameters. The linear growth law holds until saturation, so lags, critical rates and residual amplitudes
+can be predicted quantitatively, some with no free parameter. Successive cycles agree to tens of ohms,
+bench and simulation agree once their thresholds are aligned, and the tipping boundary is sharp to $2\%$.
+At \SI{73}{\hertz} a sweep cycle takes seconds, so one run contains dozens of realisations of the same
+experiment, and component-level simulation separates the behaviour of nominal components from that of
+the real ones.

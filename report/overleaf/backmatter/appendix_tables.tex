@@ -1,0 +1,96 @@
+% ---------------------------------------------------------------------
+%  Appendix B -- complete tables of switching points (generated from the analysis)
+% ---------------------------------------------------------------------
+\section{Complete tables of switching points}\label{app:tables}
+
+This section lists the switching points from which the fits of \cref{ch:stage2,ch:stage3} were made.
+Rates are true rates (\cref{sec:protocol}); $\Ron$ and $\Roff$ are averages over the complete cycles of
+each run, with their standard deviation.
+
+\begin{table}[H]
+\centering\scriptsize\renewcommand{\arraystretch}{0.92}
+\begin{tabular}{@{}rrrr@{\,$\pm$\,}lr@{\,$\pm$\,}l@{}}
+\toprule
+nominal rate & true rate & $\tau$ & \multicolumn{2}{c}{$\Ron$} & \multicolumn{2}{c}{$\Roff$} \\
+(\si{\ohmpersec}) & (\si{\ohmpersec}) & (\si{\milli\second}) & \multicolumn{2}{c}{(\si{\ohm})} & \multicolumn{2}{c}{(\si{\ohm})} \\
+\midrule
+100 & 103 & 3132.4 & 97930 & 41 & 97006 & 15 \\
+150 & 154 & 2090.4 & 98086 & 34 & 97076 & 33 \\
+200 & 206 & 1567.0 & 98233 & 17 & 97036 & 13 \\
+250 & 257 & 1253.8 & 98289 & 7 & 97003 & 11 \\
+300 & 309 & 1044.4 & 98357 & 3 & 96968 & 4 \\
+350 & 360 & 895.0 & 98417 & 8 & 96956 & 5 \\
+400 & 412 & 783.6 & 98471 & 3 & 96919 & 5 \\
+450 & 463 & 697.2 & 98415 & 5 & 96729 & 8 \\
+500 & 515 & 626.9 & 98646 & 7 & 96705 & 10 \\
+750 & 771 & 418.3 & 98969 & 10 & 96565 & 7 \\
+1000 & 1027 & 314.0 & 98925 & 7 & 96435 & 11 \\
+2000 & 2061 & 156.5 & 100001 & 25 & 96017 & 15 \\
+3000 & 3091 & 104.4 & 100629 & 23 & 95727 & 22 \\
+4000 & 4123 & 78.2 & 100831 & 144$^{\ast}$ & 95408 & 37 \\
+5000 & 5102 & 63.2 & 100683 & 29$^{\ast}$ & 95242 & 31 \\
+7500 & 7649 & 42.2 & 100618 & 1$^{\ast}$ & 94721 & 5 \\
+9000 & 9194 & 35.1 & 98105 & 185$^{\ast}$ & 94212 & 91 \\
+\bottomrule
+\end{tabular}
+\caption[Bench switching points, configuration A]{Bench switching points in configuration A
+(\cref{ch:stage2}). $^{\ast}$: the 90\% level was reached only after the sweep had turned back.}
+\label{tab:appB-bench}
+\end{table}
+
+\begin{table}[p]
+\centering\footnotesize
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+nominal rate (\si{\ohmpersec}) & true rate (\si{\ohmpersec}) & $\Ron$ (\si{\ohm}) & $\Roff$ (\si{\ohm}) & $A_{\min}/\Asat$ \\
+\midrule
+50 & 52 & 94324 & 93806 & 0.000 \\
+75 & 77 & 94412 & 93728 & 0.000 \\
+100 & 103 & 94472 & 93699 & 0.000 \\
+150 & 155 & 94579 & 93641 & 0.000 \\
+200 & 206 & 94688 & 93583 & 0.000 \\
+250 & 258 & 94766 & 93525 & 0.000 \\
+300 & 310 & 94874 & 93468 & 0.000 \\
+350 & 361 & 94904 & 93414 & 0.000 \\
+400 & 413 & 94973 & 93383 & 0.000 \\
+450 & 465 & 95064 & 93350 & 0.000 \\
+500 & 516 & 95123 & 93320 & 0.000 \\
+750 & 774 & 95402 & 93155 & 0.000 \\
+1000 & 1032 & 95618 & 93028 & 0.000 \\
+2000 & 2065 & 96305 & 92628 & 0.000 \\
+3000 & 3097 & 96841 & 92312 & 0.000 \\
+3500 & 3613 & 97128 & 92187 & 0.000 \\
+3700 & 3819 & 97146 & 92139 & 0.000 \\
+3800 & 3923 & 97254 & 92107 & 0.000 \\
+3850 & 3974 & 97189 & 92101 & 0.000 \\
+3900 & 4026 & 97238 & 92072 & 0.000 \\
+3950 & 4077 & 97333 & 92082 & 0.000 \\
+3975 & 4103 & 97159 & 92069 & 0.000 \\
+4000 & 4129 & 97410 & 92063 & 0.000 \\
+5000 & 5161 & 97748 & 91840 & 0.000 \\
+6000 & 6194 & 98163 & 91630 & 0.000 \\
+7500 & 7742 & 98487 & 91359 & 0.001 \\
+9000 & 9290 & 98532 & 91114 & 0.005 \\
+10000 & 10323 & 98598 & -- & 0.009 \\
+12000 & 12387 & 98729 & -- & 0.020 \\
+15000 & 15484 & 98566 & -- & 0.043 \\
+18000 & 18581 & 98436 & -- & 0.072 \\
+20000 & 20645 & 98458 & -- & 0.095 \\
+25000 & 25806 & 98430 & -- & 0.152 \\
+30000 & 30968 & 98431 & -- & 0.208 \\
+35000 & 36129 & 98453 & -- & 0.261 \\
+40000 & 41290 & 98412 & -- & 0.309 \\
+45000 & 46452 & 98396 & -- & 0.356 \\
+50000 & 51613 & 98397 & -- & 0.392 \\
+60000 & 61935 & 98403 & -- & 0.460 \\
+70000 & 72258 & 98410 & -- & 0.515 \\
+80000 & 82581 & 98375 & -- & 0.561 \\
+90000 & 92903 & 98308 & -- & 0.600 \\
+100000 & 103226 & 98321 & -- & 0.633 \\
+\bottomrule
+\end{tabular}
+\caption[Simulated switching points, configuration A]{Simulated switching points in configuration A
+(\cref{ch:stage3}). A dash means that the amplitude did not fall to 10\% before the sweep turned back.
+The last column is the smallest amplitude reached in a cycle.}
+\label{tab:appB-sim}
+\end{table}

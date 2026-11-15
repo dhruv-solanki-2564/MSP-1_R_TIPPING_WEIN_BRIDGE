@@ -1,0 +1,46 @@
+% =====================================================================
+%  Rate-Induced Tipping in a Wien-Bridge Oscillator
+%  PH 595: M.Sc. Project Stage I  --  Dhruv Kumar Solanki (25N0305)
+%
+%  main.tex only stitches the pieces together. To edit a part of the
+%  report, open the matching file in frontmatter/, chapters/ or
+%  backmatter/ and recompile main.tex (pdflatex -> bibtex -> pdflatex x2).
+% =====================================================================
+\documentclass[12pt,a4paper,oneside]{report}
+\input{preamble}
+
+\begin{document}
+
+% ---------------- front matter ----------------
+\pagenumbering{roman}
+\input{frontmatter/titlepage}
+\input{frontmatter/acknowledgements}
+\input{frontmatter/abstract}
+\input{frontmatter/contents}
+
+% ---------------- main text -------------------
+\cleardoublepage
+\pagenumbering{arabic}
+\input{chapters/ch1_introduction}
+\input{chapters/ch2_theory}
+\input{chapters/ch3_methods}
+\input{chapters/ch4_stage1}
+\input{chapters/ch5_stage2}
+\input{chapters/ch6_stage3}
+\input{chapters/ch7_stage4}
+\input{chapters/ch8_discussion}
+\input{chapters/ch10_conclusion}
+\input{chapters/ch9_future}
+
+% ---------------- back matter -----------------
+\appendix
+\input{backmatter/appendix_code}
+\input{backmatter/appendix_tables}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{unsrtnat}
+\bibliography{backmatter/references}
+
+\end{document}

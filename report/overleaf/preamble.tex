@@ -1,0 +1,155 @@
+% =====================================================================
+%  preamble.tex  --  packages, layout and macros for the whole report
+% =====================================================================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[sc]{mathpazo}          % Palatino text + matching maths
+\usepackage[scaled=0.88]{helvet}   % scalable sans-serif for labels
+\usepackage{courier}
+\linespread{1.08}
+\usepackage[a4paper,left=2.8cm,right=2.5cm,top=2.7cm,bottom=2.8cm,headheight=15pt]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{booktabs,array,tabularx,multirow}
+\usepackage[font=small,labelfont={bf,sf},labelsep=period,margin=0.6cm,skip=8pt]{caption}
+\usepackage{subcaption}
+\usepackage{siunitx}
+\sisetup{detect-all,range-phrase={--},range-units=single,separate-uncertainty=true,per-mode=symbol}
+\DeclareSIUnit\ohmpersec{\ohm\per\second}
+\usepackage{enumitem}
+\setlist{itemsep=0.25em,topsep=0.5em}
+\usepackage{needspace}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{etoolbox}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.8}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,shapes.misc,fit,backgrounds,decorations.pathreplacing}
+\usepackage[siunitx,RPvoltages]{circuitikz}
+\usepackage[most]{tcolorbox}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[lof,lot]{etoc}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+
+% ---------------- colours ---------------------------------------------
+\definecolor{accent}{HTML}{7A2E22}     % deep maroon: chapter numbers, rules
+\definecolor{ink}{HTML}{1F2A44}        % links
+\definecolor{soft}{HTML}{5B5B5B}
+\definecolor{boxbg}{HTML}{F3F3F3}
+\definecolor{keybg}{HTML}{EDEDED}
+\definecolor{boxrule}{HTML}{9A9A9A}
+\definecolor{boxhead}{HTML}{5A5A5A}
+\definecolor{upcol}{HTML}{1F6F3F}      % switch-on / recovers
+\definecolor{dncol}{HTML}{B2182B}      % switch-off / tipped
+\hypersetup{colorlinks=true,linkcolor=ink,citecolor=ink,urlcolor=ink,
+  pdftitle={Rate-Induced Tipping in a Wien-Bridge Oscillator},
+  pdfauthor={Dhruv Kumar Solanki}}
+
+% ---------------- project-wide facts -----------------------------------
+\newcommand{\reporttitle}{Rate-Induced Tipping in a Wien-Bridge Oscillator}
+\newcommand{\repourl}{https://github.com/dhruv-solanki-2564/MSP-1_R_TIPPING_WEIN_BRIDGE}
+
+% ---------------- headings ---------------------------------------------
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}
+  {\color{accent}\Large\scshape\chaptertitlename\ \thechapter}
+  {0.4em}
+  {\Huge\raggedright}
+  [\vspace{0.6em}{\color{accent}\titlerule[1.2pt]}]
+\titlespacing*{\chapter}{0pt}{-1.2em}{1.6em}
+\titleformat{\section}{\normalfont\Large\bfseries}{\color{accent}\thesection}{0.8em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\color{accent}\thesubsection}{0.8em}{}
+\titleformat{\paragraph}[runin]{\normalfont\bfseries}{}{0pt}{}[.]
+\titlespacing*{\section}{0pt}{1.6em}{0.7em}
+\titlespacing*{\subsection}{0pt}{1.2em}{0.5em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em plus 0.15em minus 0.1em}
+
+% ---------------- running header ---------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhead[L]{\small\itshape\color{soft}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{soft}M.Sc.\ Project Stage~I}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+
+% ---------------- per-chapter lists of figures and tables ---------------
+% \chapterlists prints, right under a chapter title, the figures and tables
+% of that chapter with clickable page references.
+\makeatletter
+\newcommand{\chapterlistline}{\noindent\makebox[2.6em][l]{\etocnumber}%
+  \parbox[t]{\dimexpr\linewidth-5.2em}{\raggedright\etocname\strut}\hfill\etocpage\par\vspace{1.5pt}}
+\renewcommand{\etoclocallistoffigureshook}{\etocsetstyle{section}{}{}{\chapterlistline}{}}
+\renewcommand{\etoclocallistoftableshook}{\etocsetstyle{section}{}{}{\chapterlistline}{}}
+% optional argument: f = figures only, ft = figures and tables (default), t = tables only
+\newcommand{\chapterlists}[1][ft]{%
+  \begingroup\small
+  \etocsettocstyle{}{}%
+  \begin{tcolorbox}[enhanced,colback=white,colframe=boxrule,boxrule=0.4pt,arc=1.5pt,
+      left=8pt,right=8pt,top=5pt,bottom=4pt,before skip=0pt,after skip=1.4em]
+  \def\chl@arg{#1}\def\chl@f{f}\def\chl@t{t}%
+  \ifx\chl@arg\chl@t\else
+    {\sffamily\bfseries\footnotesize\color{boxhead}FIGURES IN THIS CHAPTER}\par\vspace{3pt}
+    \locallistoffigures
+  \fi
+  \ifx\chl@arg\chl@f\else
+    \ifx\chl@arg\chl@t\else\vspace{5pt}\fi
+    {\sffamily\bfseries\footnotesize\color{boxhead}TABLES IN THIS CHAPTER}\par\vspace{3pt}
+    \locallistoftables
+  \fi
+  \end{tcolorbox}
+  \endgroup}
+\makeatother
+
+% ---------------- boxes -------------------------------------------------
+% "Why this step?" side note used inside derivations
+\newtcolorbox{whybox}[1][Why this step?]{enhanced,breakable,colback=boxbg,colframe=boxrule,
+  boxrule=0pt,leftrule=2.5pt,arc=0pt,left=9pt,right=9pt,top=6pt,bottom=6pt,
+  fontupper=\small,before skip=0.9em,after skip=0.9em,
+  title={#1},coltitle=boxhead,fonttitle=\sffamily\bfseries\small,
+  attach title to upper={\ \ },titlerule=0pt,colbacktitle=boxbg}
+% key result / take-away box
+\newtcolorbox{keybox}[1][]{enhanced,breakable,colback=keybg,colframe=boxrule,boxrule=0.5pt,arc=2pt,
+  left=10pt,right=10pt,top=7pt,bottom=7pt,before skip=1em,after skip=1em,#1}
+% end-of-chapter summary
+\newtcolorbox{learned}[1][What this stage taught us]{enhanced,breakable,colback=boxbg,colframe=boxrule,
+  boxrule=0.6pt,arc=2pt,left=10pt,right=10pt,top=7pt,bottom=7pt,before skip=1.2em,after skip=1em,
+  title={#1},fonttitle=\sffamily\bfseries\small,colbacktitle=boxhead,coltitle=white}
+
+% ---------------- maths shorthands --------------------------------------
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\RF}{R_{F}}
+\newcommand{\Ri}{R_{i}}
+\newcommand{\Gc}{G_{c}}
+\newcommand{\wo}{\omega_{0}}
+\newcommand{\Vout}{V_{\mathrm{out}}}
+\newcommand{\Asat}{A_{\mathrm{sat}}}
+\newcommand{\Ron}{R_{\mathrm{on}}}
+\newcommand{\Roff}{R_{\mathrm{off}}}
+\newcommand{\Lon}{\Lambda_{\mathrm{on}}}
+\newcommand{\Loff}{\Lambda_{\mathrm{off}}}
+\newcommand{\Gp}{\Gamma_{+}}
+\newcommand{\Gm}{\Gamma_{-}}
+\newcommand{\lamc}{\lambda_{c}}
+\newcommand{\kOhm}{\si{\kilo\ohm}}
+\crefname{equation}{Eq.}{Eqs.}
+\Crefname{equation}{Equation}{Equations}
+\crefname{figure}{Fig.}{Figs.}
+\Crefname{figure}{Figure}{Figures}
+\crefname{chapter}{Chapter}{Chapters}
+\crefname{section}{Section}{Sections}
+\crefname{table}{Table}{Tables}

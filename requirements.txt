@@ -1,0 +1,7 @@
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+matplotlib>=3.7
+jupyter
+# only for the cells that run LTspice (notebooks 01, 08, 12, 13):
+PyLTSpice>=5.0

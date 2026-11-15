@@ -1,0 +1,24 @@
+\documentclass[border=8pt]{standalone}
+\usepackage{mathpazo}
+\usepackage[siunitx]{circuitikz}
+\usetikzlibrary{calc}
+\definecolor{accent}{HTML}{7A2E22}
+\begin{document}
+\begin{circuitikz}[font=\footnotesize]
+  \ctikzset{bipoles/length=0.9cm}
+  \draw (0,0) node[op amp, noinv input up] (oa) {\scriptsize LM741};
+  \draw (oa.out) -- ++(1.6,0) coordinate (O) node[right] {$V_{\rm out}$};
+  \coordinate (N) at ($(oa.-)+(-0.5,0)$);
+  \draw (oa.-) -- (N) -- ++(0,-1.3) coordinate (B);
+  \draw (B) to[vR, l={$R_F=\SI{1}{\kilo\ohm}\times V_{\rm rctl}$}, *-, color=accent] (B -| O) -- (O);
+  \draw (B) to[R, l_={$R_i=\SI{47}{\kilo\ohm}$}, color=black] ++(0,-1.7) to[sV, l_={\scriptsize noise source}] ++(0,-1.5) node[ground]{};
+  \coordinate (P) at ($(oa.+)+(-1.9,0)$);
+  \draw (oa.+) -- (P);
+  \draw (P) -- ++(0,1.4) coordinate (T);
+  \draw (T) to[R, l={$R$}] ++(2.1,0) to[C, l={$C$}] (T -| O) -- (O);
+  \draw (P) to[C, l={$C$}, *-] ++(0,-1.9) node[ground]{};
+  \draw (P) -- ++(-1.0,0) to[R, l_={$R$}] ++(0,-1.9) node[ground]{};
+  \node[anchor=west, font=\small\bfseries] at (-4.3,2.5) {Stage 3: staircase of $R_F$};
+  \node[anchor=north west, font=\scriptsize, align=left, text width=9.5cm] at (-4.3,-6.0) {File: ltspice/stage3\_staircase/wien\_bridge\_staircase.asc. LM741 on $\pm15$\,V; $R=\SI{2.17}{\kilo\ohm}$, $C=\SI{1}{\micro\farad}$; $V_{\rm rctl}$ is a PWL staircase from 91 to 101 (1 V = 1 k$\Omega$); a 50 ms pulse source $V_{\rm trig}$ marks the start.};
+\end{circuitikz}
+\end{document}

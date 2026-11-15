@@ -1,0 +1,18 @@
+# notebook results
+notebooks/outputs/
+.ipynb_checkpoints/
+__pycache__/
+# LTspice work files
+*.raw
+*.log
+*.fail
+*.op.raw
+# LaTeX build files
+*.aux
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
